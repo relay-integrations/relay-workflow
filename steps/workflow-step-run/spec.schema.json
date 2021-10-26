@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the workflow to run."
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Parameters to run the workflow with.",
+      "additionalProperties": {"type": "string"}
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "additionalProperties": false
+}

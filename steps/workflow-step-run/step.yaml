@@ -1,0 +1,32 @@
+apiVersion: integration/v1
+kind: Step
+name: workflow-run
+version: 1
+summary: Run another Relay workflow
+
+description: |
+  Runs another workflow in your Relay account by its name.
+
+build:
+  apiVersion: build/v1
+  kind: Docker
+
+publish:
+  repository: relaysh/relay-workflow-step-run
+
+schemas:
+  spec:
+    source: file
+    file: spec.schema.json
+
+examples:
+- summary: Start another workflow run
+  content:
+    apiVersion: v1
+    kind: Step
+    name: workflow-run
+    image: relaysh/relay-workflow-step-run
+    spec:
+      name: workflow-b
+      parameters:
+        message: "a message for workflow b to print"
