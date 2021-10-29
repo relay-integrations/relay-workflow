@@ -6,7 +6,7 @@ Integration with Relay workflows for Puppet Relay.
 
 | Type | Name                                           | Description           |
 |------|------------------------------------------------|-----------------------|
-| Step | [relay-workflow-run](/steps/workflow-step-run) | Run another workflow. |
+| Step | [run](/steps/run) | Run another workflow. |
 
 ## Contributing
 

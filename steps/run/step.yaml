@@ -1,6 +1,6 @@
 apiVersion: integration/v1
 kind: Step
-name: workflow-run
+name: run
 version: 1
 summary: Run another Relay workflow
 
@@ -12,7 +12,7 @@ build:
   kind: Docker
 
 publish:
-  repository: relaysh/relay-workflow-step-run
+  repository: relaysh/workflow-step-run
 
 schemas:
   spec:
@@ -25,7 +25,7 @@ examples:
     apiVersion: v1
     kind: Step
     name: workflow-run
-    image: relaysh/relay-workflow-step-run
+    image: relaysh/workflow-step-run
     spec:
       name: workflow-b
       parameters:
