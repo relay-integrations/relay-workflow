@@ -10,6 +10,16 @@
       "type": "object",
       "description": "Parameters to run the workflow with.",
       "additionalProperties": {"type": "string"}
+    },
+    "parameters_array": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Array of parameter objects to repeatedly run the workflow with.",
+      "additionalProperties": {
+        "type": "string"
+      }
     }
   },
   "required": [

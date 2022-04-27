@@ -20,13 +20,26 @@ schemas:
     file: spec.schema.json
 
 examples:
-- summary: Start another workflow run
+- summary: Start the workflow `my-workflow` with `parameters`.
   content:
     apiVersion: v1
     kind: Step
-    name: workflow-run
+    name: my-workflow
     image: relaysh/workflow-step-run
     spec:
       name: workflow-b
       parameters:
         message: "a message for workflow b to print"
+- summary: Run the workflow `my-workflow` in a loop for every `parameters` 
+    object in `parameters_array`. 
+  content:
+    apiVersion: v1
+    kind: Step
+    name: my-workflow
+    image: relaysh/workflow-step-run
+    spec:
+      name: workflow-b
+      parameters_array:
+        - message: "first message for workflow b to print"
+        - message: "second message for workflow b to print"
+        - message: "third message for workflow b to print"
