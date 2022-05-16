@@ -11,7 +11,7 @@
       "description": "Parameters to run the workflow with.",
       "additionalProperties": {"type": "string"}
     },
-    "parameters_array": {
+    "parameterSets": {
       "type": "array",
       "items": {
         "type": "object"

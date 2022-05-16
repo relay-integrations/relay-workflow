@@ -31,7 +31,7 @@ examples:
       parameters:
         message: "a message for workflow b to print"
 - summary: Run the workflow `my-workflow` in a loop for every `parameters` 
-    object in `parameters_array`. 
+    object in `parameterSets`. 
   content:
     apiVersion: v1
     kind: Step
@@ -39,7 +39,7 @@ examples:
     image: relaysh/workflow-step-run
     spec:
       name: workflow-b
-      parameters_array:
+      parameterSets:
         - message: "first message for workflow b to print"
         - message: "second message for workflow b to print"
         - message: "third message for workflow b to print"
