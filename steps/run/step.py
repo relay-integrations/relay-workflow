@@ -1,5 +1,5 @@
 import logging
-from relay_sdk import Interface, Dynamic as D, UnresolvableException
+from relay_sdk import Interface, Dynamic as D
 
 relay = Interface()
 
@@ -11,10 +11,10 @@ param_sets = None
 # if `parameters` is defined, `parameterSets` is ignored
 try:
     params = relay.get(D.parameters)
-except UnresolvableException:
+except OSError:
     try:
         param_sets = relay.get(D.parameterSets)
-    except UnresolvableException:
+    except OSError:
         params = {}
 
 if param_sets:
