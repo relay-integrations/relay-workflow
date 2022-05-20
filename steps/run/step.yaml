@@ -29,7 +29,7 @@ examples:
     spec:
       name: my-workflow
       parameters:
-        message: "a message for workflow b to print"
+        message: "a message for my-workflow to print"
 - summary: >
     Run the workflow `my-workflow` in a loop for every
     object in `parameterSets` as `parameters`.
