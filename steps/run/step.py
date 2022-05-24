@@ -1,5 +1,5 @@
+import sys
 import logging
-import json
 from relay_sdk import Interface, Dynamic as D
 
 relay = Interface()
@@ -11,33 +11,25 @@ param_sets = None
 
 # if `parameters` is defined, `parameterSets` is ignored
 try:
-    params = relay.get(D.parameters)
+    param_sets = [relay.get(D.parameters)]
 except OSError:
     try:
         param_sets = relay.get(D.parameterSets)
     except OSError:
-        params = {}
+        logging.error('Need to pass `parameters` or `parameterSets`')
+        sys.exit(1)
 
-if param_sets:
-    logging.info(
-        f'Iterating workflow {name} over params array {param_sets}')
-    for params in param_sets:
-        resp = relay.workflows.run(name, params)
-        logging.info(json.dumps(resp, indent=2))
-        run = resp['workflow_run']
-        relay.decorators.set_link(
-            f'{run["run_number"]:03d}', # add leading zeros for proper ordering in the UI # noqa E501
-            f'Run {run["run_number"]:03d}',
-            run['app_url']
-        )
-
+if len(param_sets) > 1:
+    logging.info(f'Iterating workflow {name} over params array {param_sets}')
 else:
-    logging.info(f'Running workflow {name} with params {params}')
-    resp = relay.workflows.run(name, params)
-    logging.info(json.dumps(resp, indent=2))
-    run = resp['workflow_run']
+    logging.info(f'Running workflow {name} with params {param_sets[0]}')
+
+for params in param_sets:
+    run = relay.workflows.run(name, params)
+    logging.info(run)
     relay.decorators.set_link(
-        f'{run["run_number"]:03d}', # add leading zeros for proper ordering in the UI # noqa E501
-        f'Run {run["run_number"]:03d}',
-        run['app_url']
-        )
+        # add leading zeros for proper ordering in the UI
+        f'{run.run_number:03d}',
+        f'Run {run.run_number:03d}',
+        run.app_url
+    )
