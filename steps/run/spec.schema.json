@@ -8,18 +8,14 @@
     },
     "parameters": {
       "type": "object",
-      "description": "Parameters to run the workflow with.",
-      "additionalProperties": {"type": "string"}
+      "description": "Parameters to run the workflow with."
     },
     "parameterSets": {
       "type": "array",
       "items": {
         "type": "object"
       },
-      "description": "Array of parameter objects to repeatedly run the workflow with.",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "description": "Array of parameter objects to repeatedly run the workflow with."
     }
   },
   "required": [
